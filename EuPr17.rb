@@ -37,7 +37,8 @@ class EuPr17
 				fstDig = x/100
 				x%100==0 ? in_words(fstDig)+"hundred" : in_words(fstDig)+"hundredand"+in_words(x-fstDig*100)
 			when 1...1000
-				process_above(x, 1000, "thousand")
+				last3Digs = x%1000
+				process_above(x, 1000, "thousand#{"and" if last3Digs<100 and last3Digs>0}")
 			when 1000...1_000_000
 				process_above(x, 1_000_000, "million")
 			end
